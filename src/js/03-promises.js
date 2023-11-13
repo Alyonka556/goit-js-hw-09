@@ -11,7 +11,7 @@ function onSubmitForm(event) {
   const step = Number(event.target.elements.step.value);
   let delay = Number(event.target.elements.delay.value);
 
-  for (let position = 1; position < amount; position++) {
+  for (let position = 1; position <= amount; position++) {
     createPromise(position, delay)
     .then(({ position, delay }) => {
       Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
@@ -29,17 +29,13 @@ function createPromise(position, delay) {
     setTimeout(() => {
       const shouldResolve = Math.random() > 0.3;
       if (shouldResolve) {
-        // Fulfill
         resolve({ position, delay });
       } else {
-        // Reject
-        reject({ position, delay })
+        reject({ position, delay });
       }
     }, delay);
   });
 }
-
-
 
 
 form.addEventListener('submit', onSubmitForm);
