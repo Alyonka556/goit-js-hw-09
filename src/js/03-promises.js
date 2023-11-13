@@ -20,7 +20,7 @@ function onSubmitForm(event) {
       Notiflix.Report.failure(`❌ Rejected promise ${position} in ${delay}ms`);
     });
 
-    delay += step;
+    delay +=step;
   };
 }
 
